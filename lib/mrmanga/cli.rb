@@ -15,11 +15,11 @@ module Mrmanga
 
       create_pdfs = agree 'Create pdfs for volumes? (Y/n)'
 
-      say "Parsing manga info"
+      say 'Parsing manga info'
 
       manga = Mrmanga::Parser.new.get_manga(link)
 
-      say "Parsed, downloading"
+      say 'Parsed, downloading'
 
       dl = Mrmanga::Downloader.new(manga)
 
@@ -28,7 +28,10 @@ module Mrmanga
 
         volume = dl.download_volume(vol)
 
-        puts volume
+        if create_pdfs
+          puts "Rendering pdf of Vol.#{volume[:volume]}"
+          Mrmanga::PdfRenderer.new(manga, volume[:volume], volume[:pages])
+        end
       end
     end
   end

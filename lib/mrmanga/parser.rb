@@ -54,8 +54,6 @@ module Mrmanga
 
       body = Faraday.get(link).body.tr("'", '"')
 
-      puts link
-
       match = regex.match body
 
       raise "Unmatchable link: #{link}" unless match

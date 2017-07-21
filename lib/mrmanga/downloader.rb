@@ -25,7 +25,7 @@ module Mrmanga
         puts "Downloading vol.#{volch[0]} ch.#{volch[1]}"
         pages = parser.get_chapter_pages(@manga, volch[0], volch[1])
 
-        Parallel.each_with_index(pages, in_threads: 4) do |page, index|
+        Parallel.each_with_index(pages, in_threads: 6) do |page, index|
           puts "Downloading page #{index + 1}"
 
           temp = Down.download(page[:link], open_timeout: 20, read_timeout: 20)
