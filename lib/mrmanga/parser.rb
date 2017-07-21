@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'faraday'
+require 'json'
 
 module Mrmanga
   class Parser
@@ -7,8 +8,6 @@ module Mrmanga
       parsed = parse_link(link)
 
       noko = Nokogiri::HTML(Faraday.get(link).body)
-
-      item = noko.css('div[itemtype="http://schema.org/CreativeWork"]')
 
       metadata = {
         Title: noko.css('h1.names > .name').first.text,
@@ -38,10 +37,36 @@ module Mrmanga
 
       manga = Mrmanga::Manga.new
 
+      manga.add_info(
+        site: parsed[:site],
+        name: parsed[:name]
+      )
       manga.add_metadata(metadata)
       manga.add_volumes_and_chapters(volch)
 
       manga
+    end
+
+    def get_chapter_pages(manga, volume, chapter)
+      regex = /rm_h.init\( (.*), 0, false\);/
+
+      link = "http://#{manga.info[:info][:site]}/#{manga.info[:info][:name]}/vol#{volume}/#{chapter}?mature=1"
+
+      body = Faraday.get(link).body.tr("'", '"')
+
+      puts link
+
+      match = regex.match body
+
+      raise "Unmatchable link: #{link}" unless match
+
+      JSON.parse(match[1]).map do |item|
+        {
+          link: item[1].to_s + item[0].to_s + item[2].to_s,
+          width: item[3],
+          height: item[4]
+        }
+      end
     end
 
     private
