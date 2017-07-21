@@ -1,0 +1,39 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'db/**/*'
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'bin/**/*'
+    - 'spec_tmp/**/*'
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 50
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 50
+
+Documentation:
+  Enabled: false
