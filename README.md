@@ -1,16 +1,54 @@
 # mrmanga
 
+[![Gem Version](https://badge.fury.io/rb/mrmanga.svg)](https://badge.fury.io/rb/mrmanga)
+[![Gem](https://img.shields.io/gem/dtv/mrmanga.svg)]()
+[![Gemnasium](https://img.shields.io/gemnasium/4ndv/mrmanga.svg)]()
+
 #### Aka mintmanga/readmanga downloader
 
-## Installation
+## Features
+
+* mintmanga and readmanga support
+* Automatic PDF creation with correct metadata (Title, Author, Keywords)
+* Outlines in PDF (chapters/pages)
+* Multithreaded download
+* Download only specified volumes
+
+## Linux/Mac Installation
 
     $ gem install mrmanga
+
+Requires Ruby 2.3+, ImageMagick (or GraphicsMagick), libxml2 (for nokogiri)
+
+## Windows Installation
+
+Download and install ruby 2.4 from here: https://rubyinstaller.org/downloads/
+
+**DONT UNCHECK ANY CHECKBOXES!**
+
+After installation, you will be asked to install devtools, just press enter in this screen and wait.
+
+Download and install ImageMagick from here: http://imagemagick.org/script/download.php
+
+Open CMD and enter this command:
+
+```bash
+$ gem install mrmanga --no-ri
+```
+
+Now you can use it in any folder where you want to store your downloads, just simply type `mrmanga` in console and follow the instructions.
 
 ## Usage
 
     $ mrmanga
 
-And follow the instructions
+And follow the instructions. By default, it will download to the folder where you runned it.
+
+## Future and TODOs
+
+* EPUB generation (GEPUB) with cover selection
+* More usable CLI
+* Non-interactive mode
 
 ## Development
 

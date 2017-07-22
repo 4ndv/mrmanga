@@ -14,6 +14,10 @@ module Mrmanga
       @info[:metadata] = metadata
     end
 
+    def add_original_chapters(orig_ch)
+      @info[:original_chapters] = orig_ch
+    end
+
     def volumes
       @info[:volch].group_by(&:first)
     end

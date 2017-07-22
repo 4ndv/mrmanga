@@ -21,7 +21,9 @@ module Mrmanga
 
       noko_first = Nokogiri::HTML(Faraday.get("http://#{parsed[:site]}#{first_link}?mature=1").body)
 
-      volch = noko_first.css('#chapterSelectorSelect > option').map { |el| el.attr('value') }
+      volch_with_orig = noko_first.css('#chapterSelectorSelect > option').map { |el| [el.attr('value'), el.text] }
+
+      volch = volch_with_orig.map(&:first)
 
       regex_volch = /^\/[\w]+\/vol(\d+)\/(\d+).*$/
 
@@ -30,13 +32,22 @@ module Mrmanga
 
         raise "Wrong url: #{vl}" unless match
 
-        match.to_a.drop(1)
+        match.to_a.drop(1).map(&:to_i)
       end
 
       volch.reverse!
 
+      orig_names = {}
+
+      volch.each do |item|
+        orig_names[item[0]] = {} unless orig_names.key?(item[0])
+
+        orig_names[item[0]][item[1]] = volch_with_orig.pop.last
+      end
+
       manga = Mrmanga::Manga.new
 
+      manga.add_original_chapters(orig_names)
       manga.add_info(
         site: parsed[:site],
         name: parsed[:name]

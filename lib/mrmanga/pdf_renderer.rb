@@ -3,7 +3,7 @@ require 'mini_magick'
 
 module Mrmanga
   class PdfRenderer
-    def initialize(manga, volume, chapters)
+    def initialize(manga, volume, chapters, settings)
       info = manga.info[:metadata].clone
 
       title = info[:Title]
@@ -18,7 +18,6 @@ module Mrmanga
 
       chapters.each do |ch, pages|
         puts "Chapter #{ch}"
-
         outline_map[ch] = []
 
         pages.each do |page|
@@ -45,15 +44,29 @@ module Mrmanga
         section info[:Title]
 
         outline_map.each do |chapter, pages|
-          section "Chapter #{chapter}", destination: pages.first do
-            pages.each do |page_number|
-              page title: "Page #{page_number}", destination: page_number
+          section manga.info[:original_chapters][volume][chapter], destination: pages.first do
+            unless settings[:disable_outline_pages]
+              pages.each do |page_number|
+                page title: "Page #{page_number}", destination: page_number
+              end
             end
           end
         end
       end
 
-      doc.render_file "#{manga.info[:info][:name]}/#{title} Vol. #{volume}.pdf"
+      # Normalize filename (may contain inappropriate chars)
+
+      # Removing non-word chars
+      title.gsub!(/[^[[[:word:]]| |.]+]/, '')
+      # Stripping spaces, dots, underscores, dashes from start and end
+      title.gsub!(/^[\.|_| |-]+/, '')
+      title.gsub!(/[\.|_| |-]+$/, '')
+
+      filename = "#{manga.info[:info][:name]}/#{title} Vol. #{volume}.pdf"
+
+      doc.render_file filename
+
+      puts "Rendered to #{filename}"
     end
   end
 end
