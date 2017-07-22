@@ -22,13 +22,13 @@ Requires Ruby 2.3+, ImageMagick (or GraphicsMagick), libxml2 (for nokogiri)
 
 ## Windows Installation
 
-Download and install ruby 2.4 from here: https://rubyinstaller.org/downloads/
+Download and install ruby 2.4 from here: [https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/)
 
 **DONT UNCHECK ANY CHECKBOXES!**
 
 After installation, you will be asked to install devtools, just press enter in this screen and wait.
 
-Download and install ImageMagick from here: http://imagemagick.org/script/download.php
+Download and install GraphicsMagick from here: [ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/](ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/)
 
 Open CMD and enter this command:
 
