@@ -6,6 +6,10 @@
 
 #### Aka mintmanga/readmanga downloader
 
+---------
+
+[Buy me a coffee](https://andv.xyz/buymeacoffee)
+
 ## Features
 
 * mintmanga and readmanga support
