@@ -8,45 +8,51 @@
 
 ---------
 
-[Buy me a coffee](https://andv.xyz/buymeacoffee)
+[Накормить автора кофе или чем-нибудь более интересным](https://andv.xyz/buymeacoffee)
 
-## Features
+## Фичи
 
-* mintmanga and readmanga support
-* Automatic PDF creation with correct metadata (Title, Author, Keywords)
-* Outlines in PDF (chapters/pages)
-* Multithreaded download
-* Download only specified volumes
+* Скачивание с mintmanga и readmanga
+* Автогенерация PDF с корректными метаданными (Название, Автор, Ключевые слова)
+* Оглавление в PDF (главы/страницы)
+* Многопоточная загрузка
+* Загрузка только нужных томов
 
-## Linux/Mac Installation
+## Установка на Linux/Mac
 
     $ gem install mrmanga
 
-Requires Ruby 2.3+, ImageMagick (or GraphicsMagick), libxml2 (for nokogiri)
+Требуется Ruby 2.3+, ImageMagick (или GraphicsMagick), libxml2 (для nokogiri)
 
-## Windows Installation
+## Установка на Windows
 
-Download and install ruby 2.4 from here: [https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/)
+Скачайте и установите Ruby 2.4 отсюда: [https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/)
 
-**DONT UNCHECK ANY CHECKBOXES!**
+**НЕ УБИРАЙТЕ НИКАКИЕ ГАЛОЧКИ ПРИ УСТАНОВКЕ!**
 
-After installation, you will be asked to install devtools, just press enter in this screen and wait.
+После установки вылезет окно для установки devtools, просто нажимайте там Enter.
 
-Download and install GraphicsMagick from here: [ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/](ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/)
+Скачайте и установите GraphicsMagick отсюда: [ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/](ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/windows/)
 
-Open CMD and enter this command:
+Откройте cmd и введите эту команду:
 
 ```bash
 $ gem install mrmanga --no-ri
 ```
 
-Now you can use it in any folder where you want to store your downloads, just simply type `mrmanga` in console and follow the instructions.
+Теперь вы можете использовать команду `mrmanga` в cmd. Просто перейдите в нужную папку (в cmd, командой cd), введите `mrmanga` и следуйте инструкциям.
 
-## Usage
+## Использование
 
     $ mrmanga
 
-And follow the instructions. By default, it will download to the folder where you runned it.
+И следуйте инструкциям. По умолчанию, манга будет скачиваться в текущую папку.
+
+## Обновление до новой версии
+
+```bash
+$ gem install mrmanga
+```
 
 ## Future and TODOs
 

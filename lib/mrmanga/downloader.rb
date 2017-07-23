@@ -41,7 +41,33 @@ module Mrmanga
         Parallel.each_with_index(pages, in_threads: @settings[:threads]) do |page, index|
           progress.increment
 
-          temp = Down.download(page[:link], open_timeout: 20, read_timeout: 20)
+          timeout_retries = 0
+
+          begin
+            temp = Down.download(page[:link], open_timeout: 20, read_timeout: 20)
+          rescue Down::TimeoutError
+            retry if timeout_retries += 1 < 15
+
+            puts 'TimeoutError after many retries, debug info:'
+
+            puts page[:link]
+            puts @manga.info[:info]
+            puts volch.inspect
+            puts "Page number: #{index + 1}"
+            puts @settings
+
+            raise
+          rescue
+            puts 'Debug info:'
+
+            puts page[:link]
+            puts @manga.info[:info]
+            puts volch.inspect
+            puts "Page number: #{index + 1}"
+            puts @settings
+
+            raise
+          end
 
           temp.close # Windows needs this
 
