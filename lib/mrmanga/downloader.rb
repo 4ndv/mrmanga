@@ -12,7 +12,11 @@ module Mrmanga
 
       @name = @manga.info[:info][:name]
 
-      raise "Folder '#{@name}' already exists" if File.directory?(@name)
+      if File.directory?(@name)
+        should_continue = agree("Folder '#{@name}' already exists, continue?") { |q| q.default = 'yes' }
+
+        return unless should_continue
+      end
     end
 
     def download_volume(volume)
