@@ -28,14 +28,18 @@ module Mrmanga
           begin
             doc.image(page[:file])
           rescue Prawn::Errors::UnsupportedImageType
-            # Some pdfs may fail, so we convert them to jpg
+            # Some pngs may fail, so we convert them to jpg
             puts "Error in image #{page[:file]}, force converting to jpg and writing jpg version"
             conv = MiniMagick::Image.open(page[:file])
 
             conv.format 'jpg'
             conv.quality 100
 
-            doc.image(conv.path)
+            begin
+              doc.image(conv.path)
+            rescue Prawn::Errors::UnsupportedImageType
+              puts "And again, error in image #{conv.path}, skipping it"
+            end
           end
         end
       end

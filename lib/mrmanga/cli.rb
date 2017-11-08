@@ -47,7 +47,7 @@ module Mrmanga
       }
 
       if create_pdfs
-        pdf_settings[:disable_outline_pages] = !agree('Add pages in PDF outline?') { |q| q.default = 'no' }
+        pdf_settings[:disable_outline_pages] = !agree('Add pages in PDF outline?') { |q| q.default = 'yes' }
       end
 
       say 'Parsing manga info'
