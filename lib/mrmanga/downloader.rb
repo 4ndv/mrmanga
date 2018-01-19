@@ -48,7 +48,7 @@ module Mrmanga
           timeout_retries = 0
 
           begin
-            temp = Down.download(page[:link], open_timeout: 20, read_timeout: 20)
+            temp = Down.download(page[:link], open_timeout: 20, read_timeout: 20, 'Referer' => @manga.info[:info][:site])
           rescue Down::TimeoutError
             retry if timeout_retries += 1 < 15
 
