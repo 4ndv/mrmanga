@@ -1,7 +1,7 @@
 # mrmanga
 
 [![Gem Version](https://badge.fury.io/rb/mrmanga.svg)](https://badge.fury.io/rb/mrmanga)
-[![Gem](https://img.shields.io/gem/dtv/mrmanga.svg)]()
+[![Gem](https://img.shields.io/gem/dt/mrmanga.svg)]()
 [![Gemnasium](https://img.shields.io/gemnasium/4ndv/mrmanga.svg)]()
 
 #### Aka mintmanga/readmanga downloader
