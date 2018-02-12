@@ -35,9 +35,12 @@ module Mrmanga
 
       puts "Will download these volumes: #{volumes.join(', ')}" if volumes != 'all'
 
+      # Convert to string if array
+      volumes.map!(&:to_s) if volumes != 'all' && volumes.is_a?(Array)
+
       downloader_settings = {
         threads: ask('How many threads should i use to download? (6)  ', Integer) { |q| q.default = 6 },
-        volumes: volumes.map(&:to_s)
+        volumes: volumes
       }
 
       create_pdfs = agree('Create pdfs for volumes?') { |q| q.default = 'yes' }
