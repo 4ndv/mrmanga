@@ -21,7 +21,7 @@ module Mrmanga
 
     def download_volume(volume)
       if @settings[:volumes] != 'all'
-        unless @settings[:volumes].include?(volume)
+        unless @settings[:volumes].include?(volume.to_s)
           puts "Skipping Vol. #{volume}"
           return false
         end

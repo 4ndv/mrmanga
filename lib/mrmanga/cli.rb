@@ -37,7 +37,7 @@ module Mrmanga
 
       downloader_settings = {
         threads: ask('How many threads should i use to download? (6)  ', Integer) { |q| q.default = 6 },
-        volumes: volumes
+        volumes: volumes.map(&:to_s)
       }
 
       create_pdfs = agree('Create pdfs for volumes?') { |q| q.default = 'yes' }
