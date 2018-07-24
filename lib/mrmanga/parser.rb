@@ -25,7 +25,7 @@ module Mrmanga
 
       volch = volch_with_orig.map(&:first)
 
-      regex_volch = /^\/[\w]+\/vol(\d+)\/(\d+).*$/
+      regex_volch = /^\/[\w]+\/vol(-?\d+)\/(-?\d+).*$/
 
       volch.map! do |vl|
         match = regex_volch.match vl
