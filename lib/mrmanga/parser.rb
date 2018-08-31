@@ -15,11 +15,11 @@ module Mrmanga
         Keywords: noko.css('.elem_genre > a.element-link').map(&:text).join(', ')
       }
 
-      first_link = noko.css('.read-first > a').attr('href').value
+      some_chapter_link = noko.css('.chapters-link a').attr('href').value
 
-      first_link.sub!(/\?mature=.?/, '')
+      some_chapter_link.sub!(/\?mature=.?/, '')
 
-      noko_first = Nokogiri::HTML(Faraday.get("http://#{parsed[:site]}#{first_link}?mature=1").body)
+      noko_first = Nokogiri::HTML(Faraday.get("http://#{parsed[:site]}#{some_chapter_link}?mature=1").body)
 
       volch_with_orig = noko_first.css('#chapterSelectorSelect > option').map { |el| [el.attr('value'), el.text] }
 
