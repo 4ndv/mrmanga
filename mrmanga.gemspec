@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'nokogiri', '~> 1.8'
   spec.add_dependency 'faraday', '~> 0.12'
   spec.add_dependency 'prawn', '~> 2.2'
-  spec.add_dependency 'down', '~> 4.0'
+  spec.add_dependency 'down', '~> 4.6'
   spec.add_dependency 'parallel', '~> 1.11'
   spec.add_dependency 'mini_magick', '~> 4.8'
   spec.add_dependency 'progressbar', '~> 1.8'
