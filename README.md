@@ -4,9 +4,8 @@
 [![Gem](https://img.shields.io/gem/dt/mrmanga.svg)]()
 [![Gemnasium](https://img.shields.io/gemnasium/4ndv/mrmanga.svg)]()
 
-#### Aka mintmanga/readmanga downloader
 
----------
+#### Aka mintmanga/readmanga downloader
 
 [Накормить автора кофе или чем-нибудь более интересным](https://andv.xyz/buymeacoffee)
 
@@ -23,6 +22,22 @@
     $ gem install mrmanga
 
 Требуется Ruby 2.3+, ImageMagick (или GraphicsMagick), libxml2 (для nokogiri)
+
+### Дополнительные действия для установки под MacOS Mojave(10.4+)
+
+Для успешной сборки, в системе должен быть установлен Xcode (целиком или command line tools) и пакет с заголовками.
+
+Ставим Xcode:
+
+```   
+$ sudo xcode-select --install
+```
+   
+После установки Xcode ставим заголовки:
+
+```   
+$ open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+```
 
 ## Установка на Windows
 
