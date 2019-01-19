@@ -7,6 +7,8 @@
 
 #### Aka mintmanga/readmanga downloader
 
+---------
+
 [Накормить автора кофе или чем-нибудь более интересным](https://andv.xyz/buymeacoffee)
 
 ## Фичи
