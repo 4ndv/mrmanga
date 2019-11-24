@@ -17,9 +17,11 @@ module Mrmanga
 
       some_chapter_link = noko.css('.chapters-link a').attr('href').value
 
-      some_chapter_link.sub!(/\?mature=.?/, '')
+      some_chapter_link.sub!(/\?mtr=.?/, '')
 
-      noko_first = Nokogiri::HTML(Faraday.get("http://#{parsed[:site]}#{some_chapter_link}?mature=1").body)
+      some_chapter_resp = Faraday.get("https://#{parsed[:site]}#{some_chapter_link}?mtr=1")
+
+      noko_first = Nokogiri::HTML(some_chapter_resp.body)
 
       volch_with_orig = noko_first.css('#chapterSelectorSelect > option').map { |el| [el.attr('value'), el.text] }
 
@@ -61,7 +63,7 @@ module Mrmanga
     def get_chapter_pages(manga, volume, chapter)
       regex = /rm_h.init\( (.*), 0, false\);/
 
-      link = "http://#{manga.info[:info][:site]}/#{manga.info[:info][:name]}/vol#{volume}/#{chapter}?mature=1"
+      link = "https://#{manga.info[:info][:site]}/#{manga.info[:info][:name]}/vol#{volume}/#{chapter}?mtr=1"
 
       body = Faraday.get(link).body.tr("'", '"')
 
@@ -81,7 +83,7 @@ module Mrmanga
     private
 
     def parse_link(link)
-      regex = /http(s?):\/\/(readmanga.me|mintmanga.com)\/([\w]+)(\/?)/
+      regex = /http(s?):\/\/(readmanga.me|mintmanga.com|mintmanga.live)\/([\w]+)(\/?)/
 
       match = regex.match(link)
 

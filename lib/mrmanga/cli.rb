@@ -19,9 +19,9 @@ module Mrmanga
 
       say 'It will create folders into CURRENT PATH!!'
 
-      regex = /http(s?):\/\/(readmanga.me|mintmanga.com)\/([\w]+)(\/?)/
+      regex = /http(s?):\/\/(readmanga.me|mintmanga.com|mintmanga.live)\/([\w]+)(\/?)/
 
-      link = ask 'Tell me the link of the manga you want to download (example: http://readmanga.me/your_name)?  ' do |q|
+      link = ask 'Tell me the link of the manga you want to download (example: https://readmanga.me/your_name)?  ' do |q|
         q.validate = regex
       end
 
